@@ -2,19 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title> Productive Ambience </title>
+  <title>Productive Ambience</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="background"></div>
+
+  <!-- Background videos -->
+  <video id="background-driving" autoplay loop muted>
+    <source src="/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets /driving_seoul.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <video id="background-nature" autoplay loop muted style="display:none;">
+    <source src="/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets /nature_background.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Button to switch videos -->
+  <button id="switch-video" style="position:fixed; top:10px; left:10px; z-index:1;">Switch Background Video</button>
   
   <div id="sliderControls">
     <label>Ambience: <input type="range" id="ambience-slider" max="100"></label>
     <label>Coffee Machine: <input type="range" id="coffee-machine-slider" max="100"></label>
     <label>Coffee Pot Noise: <input type="range" id="coffee-pot-slider" max="100"></label>
     <label>People Talking: <input type="range" id="people-slider" max="100"></label>
-</div>
+  </div>
 
+  <!-- Pomodoro Controls -->
+  <div id="pomodoro-controls"> 
+    <h3 id="pomodoro-title"> Pomodoro Timer </h3>
+    <div id="timer">25:00</div>
+    <button id="start-button">Start</button>
+    <button id="stop-button">Stop</button>
+    <div id="cycle-count">Cycles: 0</div>
+  </div>
 
   <div id="playPauseControls">
     <button id="play-button" class="play-pause-button">Play</button>

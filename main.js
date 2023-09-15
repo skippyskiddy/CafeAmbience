@@ -10,6 +10,9 @@ coffeeMachineSound.loop = true;
 coffeePotSound.loop = true;
 peopleSound.loop = true;
 
+//Pomodoro Ding
+const timerCompleteSound = new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets /pomodoro_ding.mp3');
+
 // Function to play all sounds
 function playAllSounds() {
     ambienceSound.play();
@@ -56,5 +59,80 @@ coffeePotSlider.addEventListener('input', function() {
 peopleSlider.addEventListener('input', function() {
   peopleSound.volume = this.value / 100;
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const video1 = document.getElementById("background-driving");
+    const video2 = document.getElementById("background-nature");
+    const switchButton = document.getElementById("switch-video");
+    
+    let currentVideo = 1;
+  
+    switchButton.addEventListener("click", function() {
+      if (currentVideo === 1) {
+        video1.style.display = "none";
+        video2.style.display = "block";
+        video2.play();  // Start playing the second video
+        currentVideo = 2;
+      } else {
+        video2.style.display = "none";
+        video1.style.display = "block";
+        video1.play();  // Start playing the first video
+        currentVideo = 1;
+      }
+    });
+  });
+  
+// Pomodoro Timer 
+let isTimerRunning = false;
+let timerInterval;
+let timeLeft = 25 * 60;
+let cycleCount = 0;
+
+const timerDisplay = document.getElementById('timer');
+const startButton = document.getElementById('start-button');
+const stopButton = document.getElementById('stop-button');
+const cycleCountDisplay = document.getElementById('cycle-count');
+
+// Initialize the timer display
+updateTimerDisplay();
+
+function updateTimerDisplay() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
+
+function startTimer() {
+    if (isTimerRunning) return;
+    isTimerRunning = true;
+
+    timerInterval = setInterval(() => {
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            timerCompleteSound.play();
+            isTimerRunning = false;
+            timeLeft = 25 * 60;
+            cycleCount++;
+            cycleCountDisplay.textContent = `Cycles: ${cycleCount}`;
+            updateTimerDisplay();
+            return;
+        }
+        
+        timeLeft--;
+        updateTimerDisplay();
+    }, 1000);
+}
+
+function stopTimer() {
+    if (timerInterval) {
+        clearInterval(timerInterval);
+    }
+    isTimerRunning = false;
+    timeLeft = 25 * 60; // Reset timer to 25 minutes
+    updateTimerDisplay();
+}
+
+startButton.addEventListener('click', startTimer);
+stopButton.addEventListener('click', stopTimer);
 
 // Add more code for additional functionalities (e.g., to switch to nature or lo-fi sounds)
