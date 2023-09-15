@@ -130,17 +130,6 @@ video {
     margin-top: 10px;
 }
 
-
-/* Style for About button container 
-#about-button-container {
-    position: fixed;
-    top: 5px;
-    right: 10px; 
-    background-color: transparent;
-    border: 1px solid #ccc;
-    z-index: 2;  /* Make sure it is on top */
-
-
 /* Style for about pop up */
 .modal {
     display: none;
@@ -170,4 +159,42 @@ video {
   body {
     font-family: Arial, sans-serif;
   }
+  
+  #todo-list-container {
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    width: 400px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    border-radius: 8px;
+    z-index: 2;
+  }
+  
+  #todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #todo-input {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    max-width: 500px; /* Limit the width */
+    overflow: hidden; /* Hide overflow content */
+    text-overflow: ellipsis; /* Add an ellipsis when the content overflows */
+    white-space: nowrap;
+  }
+  
+  .checked-item {
+    text-decoration: line-through;
+  }
+  
   

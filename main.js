@@ -44,44 +44,44 @@ const coffeePotSlider = document.getElementById('coffee-pot-slider');
 const peopleSlider = document.getElementById('people-slider');
 
 // Add event listeners to sliders to adjust volume
-ambienceSlider.addEventListener('input', function() {
+ambienceSlider.addEventListener('input', function () {
     ambienceSound.volume = this.value / 100;
 });
 
-coffeeMachineSlider.addEventListener('input', function() {
+coffeeMachineSlider.addEventListener('input', function () {
     coffeeMachineSound.volume = this.value / 100;
 });
 
-coffeePotSlider.addEventListener('input', function() {
+coffeePotSlider.addEventListener('input', function () {
     coffeePotSound.volume = this.value / 100;
 });
 
-peopleSlider.addEventListener('input', function() {
-  peopleSound.volume = this.value / 100;
+peopleSlider.addEventListener('input', function () {
+    peopleSound.volume = this.value / 100;
 });
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const video1 = document.getElementById("background-driving");
     const video2 = document.getElementById("background-nature");
     const switchButton = document.getElementById("switch-video");
-    
+
     let currentVideo = 1;
-  
-    switchButton.addEventListener("click", function() {
-      if (currentVideo === 1) {
-        video1.style.display = "none";
-        video2.style.display = "block";
-        video2.play();  // Start playing the second video
-        currentVideo = 2;
-      } else {
-        video2.style.display = "none";
-        video1.style.display = "block";
-        video1.play();  // Start playing the first video
-        currentVideo = 1;
-      }
+
+    switchButton.addEventListener("click", function () {
+        if (currentVideo === 1) {
+            video1.style.display = "none";
+            video2.style.display = "block";
+            video2.play();  // Start playing the second video
+            currentVideo = 2;
+        } else {
+            video2.style.display = "none";
+            video1.style.display = "block";
+            video1.play();  // Start playing the first video
+            currentVideo = 1;
+        }
     });
-  });
-  
+});
+
 // Pomodoro Timer 
 let isTimerRunning = false;
 let timerInterval;
@@ -117,7 +117,7 @@ function startTimer() {
             updateTimerDisplay();
             return;
         }
-        
+
         timeLeft--;
         updateTimerDisplay();
     }, 1000);
@@ -141,20 +141,118 @@ const aboutButton = document.getElementById('about-button');
 const closeButton = document.querySelector('.close-button');
 
 // Show modal when "About" button is clicked
-aboutButton.addEventListener('click', function() {
-  modal.style.display = 'block';
+aboutButton.addEventListener('click', function () {
+    modal.style.display = 'block';
 });
 
 // Close modal when 'x' button is clicked
-closeButton.addEventListener('click', function() {
-  modal.style.display = 'none';
+closeButton.addEventListener('click', function () {
+    modal.style.display = 'none';
 });
 
 // Close modal when clicked outside of modal-content
-window.addEventListener('click', function(event) {
-  if (event.target === modal) {
-    modal.style.display = 'none';
-  }
+window.addEventListener('click', function (event) {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
 });
+
+//To Do list with local storage
+document.addEventListener("DOMContentLoaded", () => {
+    const addButton = document.getElementById('add-todo');
+    const clearAllButton = document.getElementById('clear-all');
+    const todoInput = document.getElementById('todo-input');
+    const todoList = document.getElementById('todo-list');
+
+    // Load tasks from localStorage
+    const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    for (const task of savedTasks) {
+        addTaskToList(task);
+    }
+
+    // Maximum number of tasks
+    const maxTasks = 10;
+
+    // Add a task when the "Add Task" button is clicked
+    addButton.addEventListener('click', addTask);
+
+    // New code for adding a task when Enter is pressed
+    todoInput.addEventListener('keyup', function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            addTask();
+        }
+    });
+
+    // Refactored adding task logic into a function so it can be used in both places
+    function addTask() {
+        const task = todoInput.value;
+        if (task.length > 50) {
+            alert("Task should be 50 characters or less");
+            return;
+        }
+        if (task) {
+            if (savedTasks.length < maxTasks) {
+                addTaskToList(task);
+                savedTasks.push(task);
+                localStorage.setItem('tasks', JSON.stringify(savedTasks));
+                todoInput.value = '';
+            } else {
+                alert('Finish some of your tasks before adding more!');
+            }
+        }
+    }
+
+    clearAllButton.addEventListener('click', () => {
+        while (todoList.firstChild) {
+            todoList.removeChild(todoList.firstChild);
+        }
+        localStorage.removeItem('tasks');
+        savedTasks.length = 0;  // Clear the array
+    });
+
+    function addTaskToList(task) {
+        const newTodo = document.createElement('li');
+        newTodo.className = 'todo-item flex justify-between items-center'; // Add Flexbox
+        const taskText = document.createElement('span');
+        taskText.textContent = task;
+        newTodo.appendChild(taskText);
+
+        // Container for buttons
+        const buttonContainer = document.createElement('div');
+        buttonContainer.className = 'flex items-center';
+
+        //  Complete button
+        const completeButton = document.createElement('button');
+        completeButton.textContent = 'Complete';
+        completeButton.className = 'ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded';
+        completeButton.addEventListener('click', function () {
+            taskText.classList.toggle('checked-item');
+        });
+
+        buttonContainer.appendChild(completeButton);
+
+        // Create delete button with Tailwind classes
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Remove';
+        deleteButton.className = 'ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded';
+        deleteButton.addEventListener('click', function () {
+            // Go two levels up (to the li element) and remove it
+            this.parentElement.parentElement.remove();
+
+            const index = savedTasks.indexOf(task);
+            if (index > -1) {
+                savedTasks.splice(index, 1);
+                localStorage.setItem('tasks', JSON.stringify(savedTasks));
+            }
+        });
+
+        buttonContainer.appendChild(deleteButton);
+        newTodo.appendChild(buttonContainer); // Append the button container instead
+
+        todoList.appendChild(newTodo);
+    }
+});
+
 
 // Add more code for additional functionalities (e.g., to switch to nature or lo-fi sounds)

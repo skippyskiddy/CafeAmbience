@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Productive Ambience</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  
+
+  <!-- Title-->
   <div id = "title"> Work with me </div>
 
   <!-- Background videos -->
@@ -58,8 +60,20 @@
   </div>
 
   <div id="playPauseControls">
-    <button id="play-button" class="play-pause-button">Play</button>
-    <button id="pause-button" class="play-pause-button">Pause</button>
+    <button id="play-button" class="play-pause-button"><i class="fas fa-play"></i></button>
+    <button id="pause-button" class="play-pause-button"><i class="fas fa-pause"></i></button>
+  </div>
+  
+  <!-- To Do List -->
+
+  <div id="todo-list-container" class="lg:static fixed left-0 bottom-0 lg:bottom-auto lg:top-0 mx-auto w-full lg:w-auto max-h-[400px] overflow-y-auto">
+    <h2 class="text-center text-xl mb-4">To-Do List</h2>
+    <ul id="todo-list">
+      <!-- Items will go here -->
+    </ul>
+    <input type="text" id="todo-input" placeholder="New task..." class="mb-2 w-full">
+    <button id="add-todo" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Task</button>
+    <button id="clear-all" class="w-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-2">Clear All</button>
   </div>
 
   
