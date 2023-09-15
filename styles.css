@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
+
 #background {
     position: fixed;
     top: 0;
@@ -11,9 +12,21 @@ body {
     z-index: -1;
 }
 
+#title {
+    position: fixed;
+    top: 10px;
+    left: 40px;
+    z-index: 4;  /* Ensure the title appears on top */
+    font-size: 100px;  
+    color: #fff;  /* White text */
+    background-color: transparent; /* Semi-transparent black background */
+    padding: 5px;
+    border-radius: 3px;
+}
+
 #sliderControls {
     position: fixed;
-    top: 15%;
+    top: 29.7%;
     right: 10px;
     width: 300px;
     height: auto;
@@ -39,14 +52,15 @@ body {
     top: 50%;  
     left: 50%;  
     display: flex;  
-    flex-direction: column;  
+    flex-direction: row;  
     align-items: center;  
     transform: translate(-50%, -50%);  
 }
 
 .play-pause-button {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
+    left: 20px;
     font-size: 24px;
     margin: 10px;
     cursor: pointer;
@@ -63,13 +77,14 @@ video {
     z-index: -1;
 }
 
+/*
 #switch-video {
     position: fixed;
     top: 10px;
-    left: 10px;
-    z-index: 1;
+    right: 10px;
+    z-index: 3;
 }
-
+*/
 #pomodoro-controls {
     position: fixed;
     bottom: 10px;
@@ -99,7 +114,24 @@ video {
     margin-top: 10px;
 }
 
-/* Style for About button container */
+#button-container {
+    position: fixed;
+    top: 5px;
+    right: 10px;
+    display: flex;
+    flex-direction: row;
+    z-index: 2;
+}
+
+#about-button-container, #switch-video {
+    margin-bottom: 10px; 
+    margin-right: 5px; 
+    margin-left: 5px; 
+    margin-top: 10px;
+}
+
+
+/* Style for About button container 
 #about-button-container {
     position: fixed;
     top: 5px;
@@ -107,7 +139,7 @@ video {
     background-color: transparent;
     border: 1px solid #ccc;
     z-index: 2;  /* Make sure it is on top */
-}
+
 
 /* Style for about pop up */
 .modal {
