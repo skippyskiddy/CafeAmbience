@@ -9,18 +9,33 @@
 
   <!-- Background videos -->
   <video id="background-driving" autoplay loop muted>
-    <source src="/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets /driving_seoul.mp4" type="video/mp4">
+    <source src="/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/driving_seoul.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 
   <video id="background-nature" autoplay loop muted style="display:none;">
-    <source src="/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets /nature_background.mp4" type="video/mp4">
+    <source src="/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/nature_background.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 
   <!-- Button to switch videos -->
   <button id="switch-video" style="position:fixed; top:10px; left:10px; z-index:1;">Switch Background Video</button>
   
+  <!-- About Button -->
+  <div id="about-button-container">
+    <button id="about-button">About</button>
+  </div>
+
+  <!--About Section-->
+  <div id="about-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>About This Project</h2>
+      <p>This project aims to ...</p>
+      <!-- More text here -->
+    </div>
+  </div>
+
   <div id="sliderControls">
     <label>Ambience: <input type="range" id="ambience-slider" max="100"></label>
     <label>Coffee Machine: <input type="range" id="coffee-machine-slider" max="100"></label>
@@ -28,8 +43,10 @@
     <label>People Talking: <input type="range" id="people-slider" max="100"></label>
   </div>
 
+ 
+
   <!-- Pomodoro Controls -->
-  <div id="pomodoro-controls"> 
+  <div id="pomodoro-controls" > 
     <h3 id="pomodoro-title"> Pomodoro Timer </h3>
     <div id="timer">25:00</div>
     <button id="start-button">Start</button>

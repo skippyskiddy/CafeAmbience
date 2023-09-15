@@ -1,8 +1,8 @@
 // Initialize audio elements
-const ambienceSound = new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets /ambience.mp3');
-const coffeeMachineSound = new Audio('assets//Users/eliftirkes-usm/Desktop/CafeAmbience/Assets /coffee_machine.mp3.mp3');
-const coffeePotSound = new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets /coffee_pot.mp3');
-const peopleSound = new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets /people_talking.mp3');
+const ambienceSound = new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/ambience.mp3');
+const coffeeMachineSound = new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/coffee_machine.mp3.mp3');
+const coffeePotSound = new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/coffee_pot.mp3');
+const peopleSound = new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/people_talking.mp3');
 
 // Set loop for audio elements
 ambienceSound.loop = true;
@@ -11,7 +11,7 @@ coffeePotSound.loop = true;
 peopleSound.loop = true;
 
 //Pomodoro Ding
-const timerCompleteSound = new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets /pomodoro_ding.mp3');
+const timerCompleteSound = new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/pomodoro_ding.mp3');
 
 // Function to play all sounds
 function playAllSounds() {
@@ -134,5 +134,27 @@ function stopTimer() {
 
 startButton.addEventListener('click', startTimer);
 stopButton.addEventListener('click', stopTimer);
+
+// Get modal element and buttons
+const modal = document.getElementById('about-modal');
+const aboutButton = document.getElementById('about-button');
+const closeButton = document.querySelector('.close-button');
+
+// Show modal when "About" button is clicked
+aboutButton.addEventListener('click', function() {
+  modal.style.display = 'block';
+});
+
+// Close modal when 'x' button is clicked
+closeButton.addEventListener('click', function() {
+  modal.style.display = 'none';
+});
+
+// Close modal when clicked outside of modal-content
+window.addEventListener('click', function(event) {
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+});
 
 // Add more code for additional functionalities (e.g., to switch to nature or lo-fi sounds)
