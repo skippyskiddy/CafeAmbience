@@ -6,10 +6,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
 
+<body>
   <!-- Title-->
-  <div id = "title"> Work with me </div>
+  <div id = "title"> PomoNest  </div>
 
   <!-- Background videos -->
   <video id="background-driving" autoplay loop muted>
@@ -30,7 +30,6 @@
     <button id="switch-video">Switch Background Video</button>
   </div>
 
-
   <!--About Section-->
   <div id="about-modal" class="modal">
     <div class="modal-content">
@@ -42,26 +41,73 @@
   </div>
 
   <div id="sliderControls">
-    <label>Ambience: <input type="range" id="ambience-slider" max="100"></label>
-    <label>Coffee Machine: <input type="range" id="coffee-machine-slider" max="100"></label>
-    <label>Coffee Pot Noise: <input type="range" id="coffee-pot-slider" max="100"></label>
-    <label>People Talking: <input type="range" id="people-slider" max="100"></label>
-  </div>
+    <button id="expand-button"> Open / Close </button>
+    <h2>Customize Your Focus Soundboard</h2>
+    
+    <div class="slider-section">
 
- 
+        <h3>Cafe</h3>
+        <div class="slider-item">
+            <label for="ambience-slider">Ambience:</label>
+            <input type="range" id="ambience-slider" min="0" max="100" value="50" step="1">
+        </div>
+        <div class="slider-item">
+            <label for="coffee-machine-slider">Coffee Machine:</label>
+            <input type="range" id="coffee-machine-slider" min="0" max="100" value="50" step="1">
+        </div>
+        <div class="slider-item">
+          <label for="coffee-pot-slider">Coffee Pot:</label>
+          <input type="range" id="coffee-pot-slider" min="0" max="100" value="50" step="1">
+        </div>
+        <div class="slider-item">
+          <label for="people-slider">People Talking:</label>
+          <input type="range" id="people-slider" min="0" max="100" value="50" step="1">
+        </div>
+
+    </div>
+
+    <div class="slider-section">
+        <h3>Nature</h3>
+        <div class="slider-item">
+          <label for="crashing-waves-slider">Crashing waves:</label>
+          <input type="range" id="crashing-waves-slider" min="0" max="100" value="50" step="1">
+        </div>
+        <div class="slider-item">
+          <label for="rainy-day-slider">Rainy day:</label>
+          <input type="range" id="rainy-day-slider" min="0" max="100" value="50" step="1">
+        </div>
+    </div>
+    
+    <div class="slider-section">
+        <h3>Psychoacoustic Sounds</h3>
+        <div class="slider-item">
+          <label for="white-noise-slider">White noise:</label>
+          <input type="range" id="white-noise-slider" min="0" max="100" value="50" step="1">
+        </div>
+        <div class="slider-item">
+          <label for="pink-noise-slider">Pink noise:</label>
+          <input type="range" id="pink-noise-slider" min="0" max="100" value="50" step="1">
+        </div>
+    </div>
+</div>
+
 
   <!-- Pomodoro Controls -->
   <div id="pomodoro-controls" > 
-    <h3 id="pomodoro-title"> Pomodoro Timer </h3>
+    <h2> Pomodoro Timer </h2>
+    <div id="clock-icon">
+      <i class="fas fa-clock"></i>
+    </div>
     <div id="timer">25:00</div>
     <button id="start-button">Start</button>
     <button id="stop-button">Stop</button>
-    <div id="cycle-count">Cycles: 0</div>
+    <button id="refresh-cycles-button">Refresh Cycles</button>
+    <div id="cycle-count">Cycles: <span id="cycle-number">0</span></div>
   </div>
 
   <div id="playPauseControls">
-    <button id="play-button" class="play-pause-button"><i class="fas fa-play"></i></button>
-    <button id="pause-button" class="play-pause-button"><i class="fas fa-pause"></i></button>
+    <button id="play-button" class="play-pause-button"><i class="fas fa-volume-mute"></i></button>
+    <button id="pause-button" class="play-pause-button"><i class="fas fa-volume-up"></i></button>
   </div>
   
   <!-- To Do List -->

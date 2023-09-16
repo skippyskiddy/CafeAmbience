@@ -60,6 +60,19 @@ peopleSlider.addEventListener('input', function () {
     peopleSound.volume = this.value / 100;
 });
 
+document.addEventListener("DOMContentLoaded", function() { // expand controller
+    const sliderControls = document.getElementById('sliderControls');
+    const expandButton = document.getElementById('expand-button');
+
+    expandButton.addEventListener('click', function() {
+        if (sliderControls.classList.contains('expanded')) {
+            sliderControls.classList.remove('expanded');
+        } else {
+            sliderControls.classList.add('expanded');
+        }
+    });
+});
+
 document.addEventListener("DOMContentLoaded", function () {
     const video1 = document.getElementById("background-driving");
     const video2 = document.getElementById("background-nature");
@@ -93,9 +106,6 @@ const startButton = document.getElementById('start-button');
 const stopButton = document.getElementById('stop-button');
 const cycleCountDisplay = document.getElementById('cycle-count');
 
-// Initialize the timer display
-updateTimerDisplay();
-
 function updateTimerDisplay() {
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
@@ -113,6 +123,7 @@ function startTimer() {
             isTimerRunning = false;
             timeLeft = 25 * 60;
             cycleCount++;
+            localStorage.setItem('cycleCount', cycleCount); // Save the cycle count to localStorage
             cycleCountDisplay.textContent = `Cycles: ${cycleCount}`;
             updateTimerDisplay();
             return;
@@ -134,6 +145,7 @@ function stopTimer() {
 
 startButton.addEventListener('click', startTimer);
 stopButton.addEventListener('click', stopTimer);
+
 
 // Get modal element and buttons
 const modal = document.getElementById('about-modal');
@@ -164,6 +176,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const todoInput = document.getElementById('todo-input');
     const todoList = document.getElementById('todo-list');
 
+      // Load the cycle count for pomodoro from localStorage
+      cycleCount = localStorage.getItem('cycleCount') ? parseInt(localStorage.getItem('cycleCount')) : 0;
+      cycleCountDisplay.textContent = `Cycles: ${cycleCount}`;
+  
+      // Get the "Refresh Cycle" button and add an event listener
+      const refreshCycleButton = document.getElementById('refresh-cycles-button');
+      
+      refreshCycleButton.addEventListener('click', function() {
+          // Reset the cycle count to 0
+          cycleCount = 0;
+          localStorage.setItem('cycleCount', cycleCount);
+          cycleCountDisplay.textContent = `Cycles: ${cycleCount}`;
+      });
+    
     // Load tasks from localStorage
     const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
     for (const task of savedTasks) {
@@ -187,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Refactored adding task logic into a function so it can be used in both places
     function addTask() {
         const task = todoInput.value;
-        if (task.length > 50) {
+        if (task.length > 30) {
             alert("Task should be 50 characters or less");
             return;
         }
@@ -253,6 +279,29 @@ document.addEventListener("DOMContentLoaded", () => {
         todoList.appendChild(newTodo);
     }
 });
+
+
+/*
+// Function to align pomodoro-controls with playPauseControls
+function alignPomodoro() {
+    const playPauseElement = document.getElementById('playPauseControls');
+    const pomodoroElement = document.getElementById('pomodoro-controls');
+  
+    if(playPauseElement && pomodoroElement) {
+      const playPauseRect = playPauseElement.getBoundingClientRect();
+  
+      // Set the 'left' and 'width' style property for pomodoro-controls
+      pomodoroElement.style.left = `${playPauseRect.left}px`;
+      pomodoroElement.style.width = `${playPauseRect.width}px`;
+    }
+  }
+  
+  // Call alignPomodoro whenever the window is resized
+  window.addEventListener('resize', alignPomodoro);
+  
+  // Call the function once to set the initial position
+  alignPomodoro();
+  */
 
 
 // Add more code for additional functionalities (e.g., to switch to nature or lo-fi sounds)

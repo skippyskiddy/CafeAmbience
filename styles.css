@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Helvetica', sans-serif;
 }
 
 
@@ -14,29 +14,64 @@ body {
 
 #title {
     position: fixed;
-    top: 10px;
-    left: 40px;
-    z-index: 4;  /* Ensure the title appears on top */
-    font-size: 100px;  
-    color: #fff;  /* White text */
-    background-color: transparent; /* Semi-transparent black background */
-    padding: 5px;
-    border-radius: 3px;
+    top: 0;  
+    left: 0;  
+    font-family: 'Helvetica', 'Arial', sans-serif; 
+    font-size: 50px;  /* make it big */
+    font-weight: bolder;  
+    color: #ffffff;  
+    border-radius: 10px;  /* rounded corners */
+    padding: 10px;  /* optional padding */
 }
+
+  
 
 #sliderControls {
     position: fixed;
-    top: 29.7%;
+    flex-direction: column;
+    bottom: 10px;
     right: 10px;
-    width: 300px;
-    height: auto;
+    width: 25em; 
+    min-height: 110px;
+    max-height: 110px; 
+    overflow-y: hidden; 
     background: rgba(255, 255, 255, 0.8);
-    padding: 15px;
+    padding: 1em;
     border-radius: 8px;
+    flex-direction: column;
+    align-items: center;
+    transform: none;
+}
+
+#sliderControls.expanded {
+    max-height: 90vh; /* Height when expanded */
+    overflow-y: auto; /* Allow scrolling */
+}
+
+#expand-button {
+    position: absolute;
+    bottom: 10px;  /* this will give you a little margin from the bottom */
+    left: 50%;
+    transform: translateX(-50%); /* this will move it to the center */
+    cursor: pointer;
+}
+
+
+.slider-section {
     display: flex;
-    flex-direction: column; /* Stack children vertically */
-    align-items: flex-start; /* Aligns the labels and sliders to the start (left) */
-    transform: translateY(-50%)
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1em;
+    margin-top: 1.5em;
+}
+
+.slider-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.5em;
 }
 
 .control-button {
@@ -48,22 +83,25 @@ body {
 }
 
 #playPauseControls {
-    position: fixed;
-    top: 50%;  
+    top: 20%;  
     left: 50%;  
+    transform: translate(-50%, -50%);
+    position: fixed;
     display: flex;  
     flex-direction: row;  
     align-items: center;  
-    transform: translate(-50%, -50%);  
 }
 
 .play-pause-button {
     width: 150px;
     height: 150px;
     left: 20px;
-    font-size: 24px;
+    font-size: 100px;
     margin: 10px;
     cursor: pointer;
+    background-color: transparent;
+    border: none;
+    opacity: 0.6;
 }
 
 video {
@@ -77,20 +115,11 @@ video {
     z-index: -1;
 }
 
-/*
-#switch-video {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 3;
-}
-*/
 #pomodoro-controls {
     position: fixed;
-    bottom: 10px;
-    right: 10px;
-    width: 300px;
-    height: auto;
+    bottom: 10px;  /* keep this if you want it at the bottom */
+    left: 50%;  /* Center it horizontally */
+    transform: translateX(-50%);  /* Adjust for the exact center */
     z-index: 2;
     background: rgba(255, 255, 255, 0.8);
     padding: 15px;
@@ -98,10 +127,22 @@ video {
     text-align: center;
 }
 
-#pomodoro-title {
-    font-size: 1.2em; 
-    margin-bottom: 10px;  
-    text-align: center;  
+#clock-icon {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#clock-icon i {
+    font-size: 50px;
+    color: tomato;
+}
+
+#play-button i, #pause-button i {
+    color: white;
+}
+
+#play-button i:hover, #pause-button i:hover {
+    color: rgb(184, 89, 89);
 }
 
 
@@ -164,7 +205,7 @@ video {
     position: fixed;
     left: 10px;
     bottom: 10px;
-    width: 400px;
+    width: 25em;
     background: rgba(255, 255, 255, 0.8);
     padding: 15px;
     border-radius: 8px;
@@ -197,4 +238,20 @@ video {
     text-decoration: line-through;
   }
   
+  h2 {
+    text-align: center;
+    font-size: 2em;
+    width: 100%;
+    margin: 0;
+    padding: 10px 0; /* Optional: Add some padding at the top and bottom */
+}
+
+    h3 {
+        text-align: center;
+        font-size: 1.5em;
+        width: 100%;
+        margin: 0;
+        padding: 10px 0; /* Optional: Add some padding at the top and bottom */
+    }
+
   
