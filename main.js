@@ -1,15 +1,19 @@
 const sounds = [
-    { name: 'ambienceSound', audio: new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/ambience.mp3')},
-    { name: 'coffeeMachineSound', audio: new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/coffee_machine.mp3.mp3')},
-    { name: 'coffeePotSound', audio: new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/coffee_pot.mp3')},
-    { name: 'peopleSound', audio: new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/people_talking.mp3')}
+    { name: 'ambienceSound', audio: new Audio('./Assets/ambience.mp3')},
+    { name: 'coffeeMachineSound', audio: new Audio('./Assets/coffee_machine.mp3')},
+    { name: 'coffeePotSound', audio: new Audio('.Assets/coffee_pot.mp3')},
+    { name: 'peopleSound', audio: new Audio('./Assets/people_talking.mp3')},
+    { name: 'crashingWavesSound', audio: new Audio('./Assets/crashing_waves.mp3')},
+    { name: 'rainyDaySound', audio: new Audio('./Assets/rainy_day.mp3')},
+    { name: 'whiteNoiseSound', audio: new Audio('./Assets/white_noise.mp3')},
+    { name: 'pinkNoiseSound', audio: new Audio('./Assets/pink_noise.mp3')}
 ]
 
 // Set loop for audio elements
 sounds.forEach(sound => sound.audio.loop = true);
 
 //Pomodoro Ding
-const timerCompleteSound = new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/pomodoro_ding.mp3');
+const timerCompleteSound = new Audio('./Assets/pomodoro_ding.mp3');
 
 // Function to play all sounds
 function playAllSounds() {
@@ -28,19 +32,16 @@ document.getElementById("toggleButton").addEventListener("click", function() {
 
     if (allPaused) {
       playAllSounds();
-      iconElement.className = "fas fa-volume-mute"; // Sets class for Pause icon
+      iconElement.className = "fas fa-volume-up"; // Sets class for Pause icon
     } else {
       pauseAllSounds();
-      iconElement.className = "fas fa-volume-up"; // Sets class for Play icon
+      iconElement.className = "fas fa-volume-mute"; // Sets class for Play icon
     }
 });
   
 
 // Get slider elements
-const ambienceSlider = document.getElementById('ambienceSound-slider');
-const coffeeMachineSlider = document.getElementById('coffeeMachineSound-slider');
-const coffeePotSlider = document.getElementById('coffeePotSound-slider');
-const peopleSlider = document.getElementById('peopleSound-slider');
+
 
 document.addEventListener("DOMContentLoaded", function() {
   

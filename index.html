@@ -13,12 +13,12 @@
 
   <!-- Background videos -->
   <video id="background-driving" autoplay loop muted>
-    <source src="/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/driving_seoul.mp4" type="video/mp4">
+    <source src="./Assets/driving_seoul.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 
   <video id="background-nature" autoplay loop muted style="display:none;">
-    <source src="/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/nature_background.mp4" type="video/mp4">
+    <source src="./Assets/nature_background.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 
@@ -32,7 +32,7 @@
 
   <div id="playPauseControls">
     <button id="toggleButton">
-        <i class="fas fa-volume-up"></i>
+        <i class="fas fa-volume-mute"></i>
     </button>
   </div>
   
@@ -42,7 +42,7 @@
     <div class="modal-content">
       <span class="close-button">&times;</span>
           <h3>about</h3>
-          <p>I'm Elif, a computer science student who spends a lot of time working and have tried various things to increase my productivity over the years.  I created this project to fuse some of my favorite elements from these experiments (backed by some science too, I promise). I recommend using Chrome for an optimal experience.</p>
+          <p>I'm Elif, a computer science student who has spent a lot of time working and experimenting with various methods to increase my productivity over the years. I created this project to combine some of my favorite elements from these experiments (backed by science, I promise). For an optimal experience, I recommend using Chrome.</p>
           
           <h4>Why combine all these things in one hub?</h4>
           <ul style="margin-left: 40px;">
@@ -70,7 +70,7 @@
         </div>
         <div class="slider-item">
             <label for="coffeeMachineSound-slider">Coffee Machine:</label>
-            <input type="range" id="coffee-machine-slider" min="0" max="100" value="50" step="1">
+            <input type="range" id="coffeeMachineSound-slider" min="0" max="100" value="50" step="1">
         </div>
         <div class="slider-item">
           <label for="coffeePotSound-slider">Coffee Pot:</label>
@@ -80,30 +80,29 @@
           <label for="peopleSound-slider">People Talking:</label>
           <input type="range" id="peopleSound-slider" min="0" max="100" value="50" step="1">
         </div>
-
     </div>
 
     <div class="slider-section">
         <h3>Nature</h3>
         <div class="slider-item">
-          <label for="crashing-waves-slider">Crashing waves:</label>
-          <input type="range" id="crashing-waves-slider" min="0" max="100" value="50" step="1">
+          <label for="crashingWavesSound-slider">Crashing waves:</label>
+          <input type="range" id="crashingWavesSound-slider" min="0" max="100" value="20" step="1">
         </div>
         <div class="slider-item">
-          <label for="rainy-day-slider">Rainy day:</label>
-          <input type="range" id="rainy-day-slider" min="0" max="100" value="50" step="1">
+          <label for="rainyDaySound-slider">Rainy day:</label>
+          <input type="range" id="rainyDaySound-slider" min="0" max="100" value="20" step="1">
         </div>
     </div>
     
     <div class="slider-section">
         <h3>Psychoacoustic Sounds</h3>
         <div class="slider-item">
-          <label for="white-noise-slider">White noise:</label>
-          <input type="range" id="white-noise-slider" min="0" max="100" value="50" step="1">
+          <label for="whiteNoiseSound-slider">White noise:</label>
+          <input type="range" id="whiteNoiseSound-slider" min="0" max="100" value="50" step="1">
         </div>
         <div class="slider-item">
-          <label for="pink-noise-slider">Pink noise:</label>
-          <input type="range" id="pink-noise-slider" min="0" max="100" value="50" step="1">
+          <label for="pinkNoiseSound-slider">Pink noise:</label>
+          <input type="range" id="pinkNoiseSound-slider" min="0" max="100" value="50" step="1">
         </div>
     </div>
 </div>

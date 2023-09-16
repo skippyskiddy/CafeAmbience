@@ -14,27 +14,30 @@ body {
 
 #title {
     position: fixed;
-    top: 0;  
-    left: 0;  
-    font-family: 'Helvetica', 'Arial', sans-serif; 
-    font-size: 50px;  /* make it big */
-    font-weight: bolder;  
-    color: #ffffff;  
-    border-radius: 10px;  /* rounded corners */
-    padding: 10px;  /* optional padding */
+    top: 0;
+    left: 0;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 50px;
+    /* make it big */
+    font-weight: bolder;
+    color: #ffffff;
+    border-radius: 10px;
+    /* rounded corners */
+    padding: 10px;
+    /* optional padding */
 }
 
-  
+
 
 #sliderControls {
     position: fixed;
     flex-direction: column;
     bottom: 10px;
     right: 10px;
-    width: 25em; 
+    width: 25em;
     min-height: 110px;
-    max-height: 110px; 
-    overflow-y: hidden; 
+    max-height: 110px;
+    overflow-y: hidden;
     background: rgba(255, 255, 255, 0.8);
     padding: 1em;
     border-radius: 8px;
@@ -44,15 +47,17 @@ body {
 }
 
 #sliderControls.expanded {
-    max-height: 90vh; /* Height when expanded */
-    overflow-y: auto; /* Allow scrolling */
+    max-height: 90vh;
+    /* Height when expanded */
+    overflow-y: auto;
+    /* Allow scrolling */
 }
 
 #expand-button {
     position: absolute;
-    bottom: 10px;  /* this will give you a little margin from the bottom */
+    bottom: 10px;
     left: 50%;
-    transform: translateX(-50%); /* this will move it to the center */
+    transform: translateX(-50%);
     cursor: pointer;
 }
 
@@ -75,24 +80,28 @@ body {
 }
 
 .control-button {
-    width: 200px;  /* Width of the button */
-    height: 200px;  /* Height of the button */
-    font-size: 24px;  /* Font size of the text */
-    margin: 10px;  /* Margin around each button */
-    cursor: pointer;  /* Makes a clickable hand appear */
+    width: 200px;
+    /* Width of the button */
+    height: 200px;
+    /* Height of the button */
+    font-size: 24px;
+    /* Font size of the text */
+    margin: 10px;
+    /* Margin around each button */
+    cursor: pointer;
 }
 
 #playPauseControls {
     position: fixed;
-    top: 10%;  
-    left: 2%; 
+    top: 10%;
+    left: 2%;
     display: flex;
     flex-direction: row;
     align-items: center;
     z-index: 4;
-  }
-  
-  #toggleButton {
+}
+
+#toggleButton {
     color: white;
     width: 150px;
     height: 150px;
@@ -101,13 +110,18 @@ body {
     cursor: pointer;
     background-color: transparent;
     border: none;
-    opacity: 0.6;
+    opacity: 0.5; 
+    opacity: 0.3s ease;
     z-index: 4;
-  }
-  
-  #toggleButton i {
+}
+
+#toggleButton:hover {
+    opacity: 1;
+}
+
+#toggleButton i {
     font-size: 150px;
-  }
+}
 
 
 video {
@@ -123,9 +137,9 @@ video {
 
 #pomodoro-controls {
     position: fixed;
-    bottom: 10px;  /* keep this if you want it at the bottom */
-    left: 50%;  /* Center it horizontally */
-    transform: translateX(-50%);  /* Adjust for the exact center */
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 2;
     background: rgba(255, 255, 255, 0.8);
     padding: 15px;
@@ -162,10 +176,11 @@ video {
     z-index: 2;
 }
 
-#about-button-container, #switch-video {
-    margin-bottom: 10px; 
-    margin-right: 5px; 
-    margin-left: 5px; 
+#about-button-container,
+#switch-video {
+    margin-bottom: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
     margin-top: 10px;
 }
 
@@ -179,9 +194,9 @@ video {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 3;
-  }
-  
-  .modal-content {
+}
+
+.modal-content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -189,21 +204,23 @@ video {
     background-color: #fff;
     padding: 20px;
     border-radius: 4px;
-  }
-  
-  .close-button {
-    cursor: pointer;
-    position: absolute;
-    top: 10px;  /* Adjust these as needed */
-    right: 10px;  /* Adjust these as needed */
 }
 
-  
-  body {
+.close-button {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    /* Adjust these as needed */
+    right: 10px;
+    /* Adjust these as needed */
+}
+
+
+body {
     font-family: Arial, sans-serif;
-  }
-  
-  #todo-list-container {
+}
+
+#todo-list-container {
     position: fixed;
     left: 10px;
     bottom: 10px;
@@ -212,48 +229,51 @@ video {
     padding: 15px;
     border-radius: 8px;
     z-index: 2;
-  }
-  
-  #todo-list {
+}
+
+#todo-list {
     list-style: none;
     padding: 0;
     margin: 0;
-  }
-  
-  #todo-input {
+}
+
+#todo-input {
     width: 100%;
     margin-bottom: 5px;
-  }
+}
 
-  .todo-item {
+.todo-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 8px;
-    max-width: 500px; /* Limit the width */
-    overflow: hidden; /* Hide overflow content */
-    text-overflow: ellipsis; /* Add an ellipsis when the content overflows */
+    max-width: 500px;
+    /* Limit the width */
+    overflow: hidden;
+    /* Hide overflow content */
+    text-overflow: ellipsis;
+    /* Add an ellipsis when the content overflows */
     white-space: nowrap;
-  }
-  
-  .checked-item {
+}
+
+.checked-item {
     text-decoration: line-through;
-  }
-  
-  h2 {
+}
+
+h2 {
     text-align: center;
     font-size: 2em;
     width: 100%;
     margin: 0;
-    padding: 10px 0; /* Optional: Add some padding at the top and bottom */
+    padding: 10px 0;
+    /* Optional: Add some padding at the top and bottom */
 }
 
-    h3 {
-        text-align: center;
-        font-size: 1.5em;
-        width: 100%;
-        margin: 0;
-        padding: 10px 0; /* Optional: Add some padding at the top and bottom */
-    }
-
-  
+h3 {
+    text-align: center;
+    font-size: 1.5em;
+    width: 100%;
+    margin: 0;
+    padding: 10px 0;
+    /* Optional: Add some padding at the top and bottom */
+}
