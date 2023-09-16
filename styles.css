@@ -193,7 +193,11 @@ video {
   
   .close-button {
     cursor: pointer;
-  }
+    position: absolute;
+    top: 10px;  /* Adjust these as needed */
+    right: 10px;  /* Adjust these as needed */
+}
+
   
   body {
     font-family: Arial, sans-serif;
