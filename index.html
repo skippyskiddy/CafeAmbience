@@ -30,6 +30,13 @@
     <button id="switch-video">Switch Background Video</button>
   </div>
 
+  <div id="playPauseControls">
+    <button id="toggleButton">
+        <i class="fas fa-volume-up"></i>
+    </button>
+  </div>
+  
+
   <!--About Section-->
   <div id="about-modal" class="modal">
     <div class="modal-content">
@@ -48,20 +55,20 @@
 
         <h3>Cafe</h3>
         <div class="slider-item">
-            <label for="ambience-slider">Ambience:</label>
-            <input type="range" id="ambience-slider" min="0" max="100" value="50" step="1">
+            <label for="ambienceSound-slider">Ambience:</label>
+            <input type="range" id="ambienceSound-slider" min="0" max="100" value="50" step="1">
         </div>
         <div class="slider-item">
-            <label for="coffee-machine-slider">Coffee Machine:</label>
+            <label for="coffeeMachineSound-slider">Coffee Machine:</label>
             <input type="range" id="coffee-machine-slider" min="0" max="100" value="50" step="1">
         </div>
         <div class="slider-item">
-          <label for="coffee-pot-slider">Coffee Pot:</label>
-          <input type="range" id="coffee-pot-slider" min="0" max="100" value="50" step="1">
+          <label for="coffeePotSound-slider">Coffee Pot:</label>
+          <input type="range" id="coffeePotSound-slider" min="0" max="100" value="50" step="1">
         </div>
         <div class="slider-item">
-          <label for="people-slider">People Talking:</label>
-          <input type="range" id="people-slider" min="0" max="100" value="50" step="1">
+          <label for="peopleSound-slider">People Talking:</label>
+          <input type="range" id="peopleSound-slider" min="0" max="100" value="50" step="1">
         </div>
 
     </div>
@@ -103,11 +110,6 @@
     <button id="stop-button">Stop</button>
     <button id="refresh-cycles-button">Refresh Cycles</button>
     <div id="cycle-count">Cycles: <span id="cycle-number">0</span></div>
-  </div>
-
-  <div id="playPauseControls">
-    <button id="play-button" class="play-pause-button"><i class="fas fa-volume-mute"></i></button>
-    <button id="pause-button" class="play-pause-button"><i class="fas fa-volume-up"></i></button>
   </div>
   
   <!-- To Do List -->

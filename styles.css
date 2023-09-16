@@ -83,26 +83,32 @@ body {
 }
 
 #playPauseControls {
-    top: 20%;  
-    left: 50%;  
-    transform: translate(-50%, -50%);
     position: fixed;
-    display: flex;  
-    flex-direction: row;  
-    align-items: center;  
-}
-
-.play-pause-button {
+    top: 10%;  
+    left: 2%; 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    z-index: 4;
+  }
+  
+  #toggleButton {
+    color: white;
     width: 150px;
     height: 150px;
     left: 20px;
-    font-size: 100px;
     margin: 10px;
     cursor: pointer;
     background-color: transparent;
     border: none;
     opacity: 0.6;
-}
+    z-index: 4;
+  }
+  
+  #toggleButton i {
+    font-size: 150px;
+  }
+
 
 video {
     position: fixed;
@@ -135,14 +141,6 @@ video {
 #clock-icon i {
     font-size: 50px;
     color: tomato;
-}
-
-#play-button i, #pause-button i {
-    color: white;
-}
-
-#play-button i:hover, #pause-button i:hover {
-    color: rgb(184, 89, 89);
 }
 
 

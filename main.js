@@ -1,63 +1,60 @@
-// Initialize audio elements
-const ambienceSound = new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/ambience.mp3');
-const coffeeMachineSound = new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/coffee_machine.mp3.mp3');
-const coffeePotSound = new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/coffee_pot.mp3');
-const peopleSound = new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/people_talking.mp3');
+const sounds = [
+    { name: 'ambienceSound', audio: new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/ambience.mp3')},
+    { name: 'coffeeMachineSound', audio: new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/coffee_machine.mp3.mp3')},
+    { name: 'coffeePotSound', audio: new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/coffee_pot.mp3')},
+    { name: 'peopleSound', audio: new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/people_talking.mp3')}
+]
 
 // Set loop for audio elements
-ambienceSound.loop = true;
-coffeeMachineSound.loop = true;
-coffeePotSound.loop = true;
-peopleSound.loop = true;
+sounds.forEach(sound => sound.audio.loop = true);
 
 //Pomodoro Ding
 const timerCompleteSound = new Audio('/Users/eliftirkes-usm/Desktop/CafeAmbience/Assets/pomodoro_ding.mp3');
 
 // Function to play all sounds
 function playAllSounds() {
-    ambienceSound.play();
-    coffeeMachineSound.play();
-    coffeePotSound.play();
-    peopleSound.play();
+    sounds.forEach(soundObj => soundObj.audio.play());
 }
 
 // Function to pause all sounds
 function pauseAllSounds() {
-    ambienceSound.pause();
-    coffeeMachineSound.pause();
-    coffeePotSound.pause();
-    peopleSound.pause();
+    sounds.forEach(soundObj => soundObj.audio.pause());
 }
 
-// Get button elements
-const playButton = document.getElementById('play-button');
-const pauseButton = document.getElementById('pause-button');
+document.getElementById("toggleButton").addEventListener("click", function() {
+    const allPaused = sounds.every(soundObj => soundObj.audio.paused);
+   
+    const iconElement = this.querySelector("i"); // Gets the i element inside the button
 
-// Add event listeners to buttons to control playback
-playButton.addEventListener('click', playAllSounds);
-pauseButton.addEventListener('click', pauseAllSounds);
+    if (allPaused) {
+      playAllSounds();
+      iconElement.className = "fas fa-volume-mute"; // Sets class for Pause icon
+    } else {
+      pauseAllSounds();
+      iconElement.className = "fas fa-volume-up"; // Sets class for Play icon
+    }
+});
+  
 
 // Get slider elements
-const ambienceSlider = document.getElementById('ambience-slider');
-const coffeeMachineSlider = document.getElementById('coffee-machine-slider');
-const coffeePotSlider = document.getElementById('coffee-pot-slider');
-const peopleSlider = document.getElementById('people-slider');
+const ambienceSlider = document.getElementById('ambienceSound-slider');
+const coffeeMachineSlider = document.getElementById('coffeeMachineSound-slider');
+const coffeePotSlider = document.getElementById('coffeePotSound-slider');
+const peopleSlider = document.getElementById('peopleSound-slider');
 
-// Add event listeners to sliders to adjust volume
-ambienceSlider.addEventListener('input', function () {
-    ambienceSound.volume = this.value / 100;
-});
-
-coffeeMachineSlider.addEventListener('input', function () {
-    coffeeMachineSound.volume = this.value / 100;
-});
-
-coffeePotSlider.addEventListener('input', function () {
-    coffeePotSound.volume = this.value / 100;
-});
-
-peopleSlider.addEventListener('input', function () {
-    peopleSound.volume = this.value / 100;
+document.addEventListener("DOMContentLoaded", function() {
+  
+    sounds.forEach(soundObj => {
+      const slider = document.getElementById(`${soundObj.name}-slider`);
+      
+      if (slider) {        
+        slider.addEventListener('input', function () {
+          soundObj.audio.volume = this.value / 100;
+        });
+      } else {
+        console.log('Slider does not exist: ', `${soundObj.name}-slider`);  // Debugging line
+      }
+    });
 });
 
 document.addEventListener("DOMContentLoaded", function() { // expand controller
@@ -281,27 +278,4 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-/*
-// Function to align pomodoro-controls with playPauseControls
-function alignPomodoro() {
-    const playPauseElement = document.getElementById('playPauseControls');
-    const pomodoroElement = document.getElementById('pomodoro-controls');
   
-    if(playPauseElement && pomodoroElement) {
-      const playPauseRect = playPauseElement.getBoundingClientRect();
-  
-      // Set the 'left' and 'width' style property for pomodoro-controls
-      pomodoroElement.style.left = `${playPauseRect.left}px`;
-      pomodoroElement.style.width = `${playPauseRect.width}px`;
-    }
-  }
-  
-  // Call alignPomodoro whenever the window is resized
-  window.addEventListener('resize', alignPomodoro);
-  
-  // Call the function once to set the initial position
-  alignPomodoro();
-  */
-
-
-// Add more code for additional functionalities (e.g., to switch to nature or lo-fi sounds)
